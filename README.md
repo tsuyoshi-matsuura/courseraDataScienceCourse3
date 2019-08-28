@@ -23,7 +23,7 @@ The course assignment asks to create a script that performs the following tasks:
      
 This script performs all the above tasks, but in a sligtly different order.
 The script takes the following steps:
-  1) Load data files in the data files into datasets: 
+  1) Load data files into datasets: 
         1) Training data set ('X_train.txt'):    data_train
         2) Traing activity set ('y_train.txt'):  act_train
         3) Training subject set (subject_train.txt): sub_train
