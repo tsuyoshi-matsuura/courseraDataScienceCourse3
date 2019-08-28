@@ -55,7 +55,9 @@ The script takes the following steps:
      the dataset 'data'. The result is in 'data_avg'
 
 ### Assumptions 
-The script assumes that the zip file with the data files was unzipped in the working directory.
-This means that the working directory should contain a folder 'UCI HAR Dataset'. If this is not
-the case please uncomment the three lines in the script that download and unzip the data file into
-the working directory.
+* The script assumes that the zip file with the data files was unzipped in the working directory.
+  This means that the working directory should contain a folder 'UCI HAR Dataset'. If this is not
+  the case please uncomment the three lines in the script that download and unzip the data file into
+  the working directory.  
+* The script also assumes that the dplyr packages is installed. If not, please
+  install the package using install.packages("dplyr") before running the script.
