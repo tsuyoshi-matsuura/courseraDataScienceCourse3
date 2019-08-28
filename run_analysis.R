@@ -29,7 +29,7 @@
 #   C) All data sets are labeled with descriptive names. The names for the
 #      processed data are taken from the file 'features.txt' (561 names),
 #      the acivity data are labeled 'activity', the subject data are labeled 'subject'
-#   D) The processed data are reduced to only contain mean and standard
+#   D) The processed data ('data_all' are reduced to only contain mean and standard
 #      deviation for each measurement
 #   E) the data are merged in column direction. The activity and subject data
 #      are put in front of the processed data: data ~ act_all + sub_all + data_all
