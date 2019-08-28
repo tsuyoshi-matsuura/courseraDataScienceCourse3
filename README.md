@@ -1,3 +1,8 @@
+<style type="text/css">
+    ol { list-style-type: upper-alpha; }
+    ol ol { list-style-type: lower-alpha; }
+</style>
+
 # Description of the script in run_analysis.R 
 
 ### Usage: source(run_analyis.R) 
@@ -19,7 +24,7 @@ The course assignment asks to create a script that performs the following tasks:
      tidy data set with the average of each variable for each activity and
      each subject. 
      
-### Implementation of the above taks in the script
+### Implementation of the above tasks in the script
      
 This script performs all the above tasks, but in a sligtly different order.
 The script takes the folloing steps
