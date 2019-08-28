@@ -1,54 +1,74 @@
-# Download the data
+# Script prepared as part of the "Getting and Cleaning Data Course Project"
+#
+# The course assignment ask to perform the following tasks
+#   1) Merges the training and the test sets to create one data set.
+#   2) Extracts only the measurements on the mean and standard deviation for 
+#      each measurement.
+#   3) Uses descriptive activity names to name the activities in the data set
+#   4) Appropriately labels the data set with descriptive variable names.
+#   5) From the data set in step 4, creates a second, independent 
+#      tidy data set with the average of each variable for each activity and
+#      each subject.
+#
+# This script performs all the above tasks, but in a sligtly different order
+
+# Downloading and unzipping of the data. A folder "UCI HAR Dataset" is 
+# created in the working folder containg all the required files
 url="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url,destfile="./data.zip")
 unzip("data.zip",exdir=".")
 
-# Load training data
-# X_train.txt has 561 columns
-X_train <- read.table("./UCI HAR Dataset/train/X_train.txt",)
+# First load all the training data located in folder "./UCI HAR Dataset/train"
+# The file "X_train.txt" contains the training data and has 561 columns
+# The file "y_train.txt" is a single column file with activity data (1-6)
+# The file "subject_train.txt" is a single column file with subject data (1-30)
+data_train <- read.table("./UCI HAR Dataset/train/X_train.txt",)
+act_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
+sub_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
-# y_train.txt is a single column file with activity data (1-6)
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
-
-# subject_train.txt is a single column file with subject data (1-30)
-subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
-
-# Load test data
-# X_test.txt has 561 columns
-X_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
-
-# y_test.txt is a single column file with activity data (1-6)
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
-
-# subject_train.txt is a single column file with subject data (1-30)
-subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+# Now load all the test data ocated in folder "./UCI HAR Dataset/test"
+# The file "X_test.txt" contains the test data and has 561 columns
+# The file "y_test.txt" is a single column file with activity data (1-6)
+# The file "subject_test.txt" is a single column file with subject data (1-30)
+data_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+act_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
+sub_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 
 # Append test data to train data and create 'all' data
-X_all <- rbind(X_train,X_test)
-y_all <- rbind(y_train,y_test)
-subject_all <- rbind(subject_train,subject_test)
+# Note that rbind does not alter the ordering of the rows, therefore
+# the three datasets remain 'synchronized'
+data_all <- rbind(data_train,data_test)
+act_all <- rbind(act_train,act_test)
+sub_all <- rbind(sub_train,sub_test)
 
-# Read headers for X_all
-header_all <- read.table("./UCI HAR Dataset/features.txt")
-names(X_all) <- header_all[,2]
+# Before merging the three data sets, they are labeled with descriptive variable
+# names. The descriptive names for 'data_all' are taken from the file
+# 'features.txt' (561 names). The column in 'act_all' is named "activity" and 
+# the columm in 'sub_all' is named "subject"
+# Read descriptive names for data_all
+data_names <- read.table("./UCI HAR Dataset/features.txt")
+names(data_all) <- data_names[,2]
+# Give descriptive names to the activity and subject data columns
+names(act_all) <- "activity"
+names(sub_all) <- "subject"
 
-# Only keep the mean and standard deviation of the measurements
-# This means only keeping columns with '-mean(' and '-std(' in their names
-keep_col <- grep("-mean\\(|-std\\(",names(X_all))
-mydata <- X_all[,keep_col]
+# At this point all three datasets have descriptive variable names. The dataset
+# data_all still has all 561 columns. Before merging the three datasets, the 
+# dataset data_all is reduced to only contain the mean and standard deviation of
+# the measurements. This is realised by only selecting the columns with '-mean('
+# or '-std(' in their descriptive name.
+keep_col <- grep("-mean\\(|-std\\(",names(data_all))
+data_all <- data_all[,keep_col]
 
-# Give headers to the activity and subject data
-names(y_all) <- "activity"
-names(subject_all) <- "subject"
-
-# Add activity and subject columns to mydata
-mydata <- cbind(y_all,subject_all,mydata)
+# Now merge the three datasets. The activity and subject columns are placed
+# in front of the data columns
+data <- cbind(act_all,sub_all,data_all)
 
 # Give descriptive names for the activities
 # read activtity code file 'activity_labels.txt'
 activity <- read.table("./UCI HAR Dataset/activity_labels.txt",stringsAsFactors=FALSE)
 
 setactname <- function(x) activity[x,2]
-mydata$activity <- sapply(mydata$activity,setactname)
+data$activity <- sapply(data$activity,setactname)
 
-mydata_avg <- mydata %>% group_by(activity,subject) %>% summarize_all(mean)
+data_mean <- data %>% group_by(activity,subject) %>% summarize_all(mean)
