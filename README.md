@@ -7,18 +7,19 @@ dataset 'data_avg' is the result of task 5 of the assignment. Moreover, the
 script will output the dataset 'data_avg' as a file 'data_avg.txt' to the
 working directory. This file is submitted as part of the assignment. 
 
-
-
-Script prepared as part of the "Getting and Cleaning Data Course Project"
-The course assignment asks to create a script that performs the following tasks
-  1) Merges the training and the test sets to create one data set.
-  2) Extracts only the measurements on the mean and standard deviation for 
+### The tasks performed by the script 
+The script is prepared as part of the "Getting and Cleaning Data Course Project".
+The course assignment asks to create a script that performs the following tasks: 
+  1) Merge the training and the test sets to create one data set.
+  2) Extract only the measurements on the mean and standard deviation for 
      each measurement.
-  3) Uses descriptive activity names to name the activities in the data set
-  4) Appropriately labels the data set with descriptive variable names.
-  5) From the data set in step 4, creates a second, independent 
+  3) Use descriptive activity names to name the activities in the data set
+  4) Appropriately label the data set with descriptive variable names.
+  5) From the data set in step 4, create a second, independent 
      tidy data set with the average of each variable for each activity and
      each subject. 
+     
+### Implementation of the above taks in the script
      
 This script performs all the above tasks, but in a sligtly different order.
 The script takes the folloing steps
