@@ -219,4 +219,4 @@ The data set has the following columns:
 
 Variables in columns 3 to 68 are described in 'features_info.txt', see also the
 inserted text above. Note that in this data set each variable is the mean
-of the measurement for each activity and each subject,
+of the measurements for each activity and each subject,
