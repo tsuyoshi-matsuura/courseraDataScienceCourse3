@@ -45,7 +45,7 @@
 ################################### STEP A #####################################
 # Downloading and unzipping of the data. A folder "UCI HAR Dataset" is 
 # created in the working folder containg all the required files
-# Uncomment the next three lines to have the script download the data
+# Uncomment the next three lines to have the script download and unzip the datafile
 #url="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 #download.file(url,destfile="./data.zip")
 #unzip("data.zip",exdir=".")
