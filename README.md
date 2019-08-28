@@ -2,7 +2,7 @@
 
 ### Usage: source(run_analyis.R) 
 This will create two tidy datasets 'data' and 'data_avg'. The first dataset
-'data' is the result of performing tasks 1-4 in the assignment. The second
+'data' is the result of performing tasks 1-4 of the assignment. The second
 dataset 'data_avg' is the result of task 5 of the assignment. Moreover, the
 script will output the dataset 'data_avg' as a file 'data_avg.txt' to the
 working directory. This file is submitted as part of the assignment. 
@@ -25,9 +25,9 @@ This script performs all the above tasks, but in a sligtly different order.
 The script takes the following steps:
   1) Load data files into datasets: 
         1) Training data set ('X_train.txt'):    data_train
-        2) Traing activity set ('y_train.txt'):  act_train
+        2) Training activity set ('y_train.txt'):  act_train
         3) Training subject set (subject_train.txt): sub_train
-        4) Test data set ('X_test.txt':        data_test
+        4) Test data set ('X_test.txt'):        data_test
         5) Test activity set ('y_test.txt':    act_test
         6) Test subject set (subject_test.txt'):     sub_test
   2) The training and test data sets are merged in the row direction using 'rbind',
@@ -40,7 +40,7 @@ The script takes the following steps:
      the activity data are labeled 'activity', the subject data are labeled 'subject'
   4) The processed data are reduced to only contain mean and standard
      deviation for each measurement. This is achieved by using grep to identify
-     variables names containg '-mean(' or '-std(' and only selecting those
+     variables names containing '-mean(' or '-std(' and only selecting those
      columns for the reduced data base
   5) The data are merged in column direction using 'cbind'. The activity and subject data
      are put in front of the processed data: data ~ act_all + sub_all + data_all
@@ -51,6 +51,6 @@ The script takes the following steps:
      in the assignment
   7) Create a second, independent tidy data set with the average of each variable
      for each activity and each subject (this is the same as task 5 of the
-     assignment). This achieved using the dplyr library to 'group_by' and 'summarize_all'
+     assignment). This is achieved using the dplyr library to 'group_by' and 'summarize_all'
      the dataset 'data'. The result is in 'data_avg'
 
