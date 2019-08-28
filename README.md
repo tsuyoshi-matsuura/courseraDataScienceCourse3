@@ -30,24 +30,27 @@ The script takes the following steps:
         4) Test data set ('X_test.txt':        data_test
         5) Test activity set ('y_test.txt':    act_test
         6) Test subject set (subject_test.txt'):     sub_test
-  2) The training and test data sets are merged in the row direction,
+  2) The training and test data sets are merged in the row direction using 'rbind',
      i.e.after this step there are still three data sets:
         1) all processed data: data_all ~ data_train + data_test
         2) all activity data:  act_all  ~ act_train  + act_test
         3) all subject data:   sub_all  ~ sub_train  + sub_test
   3) All data sets are labeled with descriptive names. The names for the
      processed data are taken from the file 'features.txt' (561 names),
-     the acivity data are labeled 'activity', the subject data are labeled 'subject'
+     the activity data are labeled 'activity', the subject data are labeled 'subject'
   4) The processed data are reduced to only contain mean and standard
-     deviation for each measurement
-  5) the data are merged in column direction. The activity and subject data
+     deviation for each measurement. This is achieved by using grep to identify
+     variables names containg '-mean(' or '-std(' and only selecting those
+     columns for the reduced data base
+  5) The data are merged in column direction using 'cbind'. The activity and subject data
      are put in front of the processed data: data ~ act_all + sub_all + data_all
   6) The activity data are given descriptive names. This is achieved by using
      the data in the file 'activity_labels.txt' to translate activity ID's to
-     descriptive names.
-     The data set after this step corresponds to the data set after tasks 1-4
+     descriptive names. 
+     The data set after this step, 'data', corresponds to the data set after tasks 1-4
      in the assignment
   7) Create a second, independent tidy data set with the average of each variable
      for each activity and each subject (this is the same as task 5 of the
-     assignment)
+     assignment). This achieved using the dplyr library to 'group_by' and 'summarize_all'
+     the dataset 'data'. The result is in 'data_avg'
 
