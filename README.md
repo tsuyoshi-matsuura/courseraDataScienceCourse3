@@ -38,10 +38,10 @@ The script takes the following steps:
   3) All data sets are labeled with descriptive names. The names for the
      processed data are taken from the file 'features.txt' (561 names),
      the activity data are labeled 'activity', the subject data are labeled 'subject'
-  4) The processed data are reduced to only contain mean and standard
+  4) The processed data ('data_all') are reduced to only contain mean and standard
      deviation for each measurement. This is achieved by using grep to identify
      variables names containing '-mean(' or '-std(' and only selecting those
-     columns for the reduced data base
+     columns for the updated, reduced data base
   5) The data are merged in column direction using 'cbind'. The activity and subject data
      are put in front of the processed data: data ~ act_all + sub_all + data_all
   6) The activity data are given descriptive names. This is achieved by using
