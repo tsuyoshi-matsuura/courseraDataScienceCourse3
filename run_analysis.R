@@ -45,9 +45,10 @@
 ################################### STEP A #####################################
 # Downloading and unzipping of the data. A folder "UCI HAR Dataset" is 
 # created in the working folder containg all the required files
-url="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(url,destfile="./data.zip")
-unzip("data.zip",exdir=".")
+# Uncomment the next three lines to have the script download the data
+#url="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+#download.file(url,destfile="./data.zip")
+#unzip("data.zip",exdir=".")
 
 # First load all the training data located in folder "./UCI HAR Dataset/train"
 # The file "X_train.txt" contains the training data and has 561 columns
@@ -129,3 +130,6 @@ data$activity <- sapply(data$activity,setactname)
 # 'data_avg' contains the second tidy data set
 library(dplyr)
 data_avg <- data %>% group_by(activity,subject) %>% summarize_all(mean)
+
+######################  Create output for submission  ##########################
+write.table(data_avg,file="data_avg.txt",row.name=FALSE)
