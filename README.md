@@ -54,3 +54,8 @@ The script takes the following steps:
      assignment). This is achieved using the dplyr library to 'group_by' and 'summarize_all'
      the dataset 'data'. The result is in 'data_avg'
 
+### Assumptions 
+The script assumes that the zip file with the data files was unzipped in the working directory.
+This means that the working directory will contain a folder 'UCI HAR Dataset'. If this is not
+the case please uncomment the three lines in the script that download and unzip the data file into
+the working directory.
