@@ -7,7 +7,7 @@ One of the most exciting areas in all of data science right now is wearable comp
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 ### Data source Information
-The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, the experiments captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, the experiments captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained data set has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
 
@@ -15,7 +15,7 @@ This data set is available for download from:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 ### Description of the source data used in the project 
-The dataset includes the following files:
+The data set includes the following files:
 - 'README.txt'
 
 - 'features_info.txt': Shows information about the variables used on the feature vector.
@@ -112,20 +112,23 @@ The complete list of variables of each feature vector is available in 'features.
 #### End content 'features_info.txt'
 
 ### Data cleaning process 
-The objective of the project is to create a tidy dataset for a subset of the source data. The following criteria were used to define a tidy dataset, viz.
+The objective of the project is to create a tidy data set for a subset of the source data. The following criteria were used to define a tidy data set, viz.
 1. Each variable forms a column
 2. Each observation forms a row
 3. Each type of observational unit forms a table 
 
-The source data already fulfil these criteria to a large extent, as each variable forms a column and each observation forms a row in the X_train.txt and X_test.txt data files. However, to make the datasets complete the data in X_train and X_test need to be combined with the activity and subject datasets in y_train/test and subject_train/test data.
-Moreover, in this project we would like to restrict the data to the mean and standard deviation for each measurement which requires reduction of the dataset.
+The source data already fulfil these criteria to a large extent, as each variable forms a column and each observation forms a row in the X_train.txt and X_test.txt data files. However, to make the data sets complete the data in X_train and X_test need to be combined with the activity and subject data sets in y_train/test and subject_train/test data.
+Moreover, in this project we would like to restrict the data to the mean and standard deviation for each measurement which requires reduction of the data set.
 
-To arrive at the desired reduced, tidy dataset the following actions were performed:
+To arrive at the desired reduced, tidy data set the following actions were performed:
   1) Merge the training and the test sets to create one data set.
   2) Extract only the measurements on the mean and standard deviation for 
      each measurement.
   3) Use descriptive activity names to name the activities in the data set
   4) Appropriately label the data set with descriptive variable names.
+Actions 1 - 4 result in an intermediate tidy data set. The final tidy data set is
+obtained by averaging each variable in the the intermediate data set for each
+activity and subject.
   
 To execute the above the following choices were made:
 1. The descriptive variable names were taken from the 'features.txt' file which tabulates
@@ -134,3 +137,81 @@ To execute the above the following choices were made:
    (used in the y_train and y_test data) agains the activity name chosen by the authors of the source data.
 3. The mean and standard deviation data were identified by the variable name which should contain either '-mean('
    or '-std(' respectively.
+   
+The above procedure was implemented in the script contained in 'run_analysis.R'.
+After sourcing the script the intermediate data set in in 'data' and the final
+data set is in 'data_avg'.
+
+### Description of the final tidy data set 'data_avg'
+
+The dimension of the data set is 180 x 68. The rows form all combination of 6 activities 
+and 30 subjects whos performed the activities.  
+The data set has the following columns:
+1 activity   
+2 subject   
+3 tBodyAcc-mean()-X   
+4 tBodyAcc-mean()-Y   
+5 tBodyAcc-mean()-Z   
+6 tBodyAcc-std()-X   
+7 tBodyAcc-std()-Y   
+8 tBodyAcc-std()-Z   
+9 tGravityAcc-mean()-X   
+10 tGravityAcc-mean()-Y   
+11 tGravityAcc-mean()-Z   
+12 tGravityAcc-std()-X   
+13 tGravityAcc-std()-Y   
+14 tGravityAcc-std()-Z   
+15 tBodyAccJerk-mean()-X   
+16 tBodyAccJerk-mean()-Y   
+17 tBodyAccJerk-mean()-Z   
+18 tBodyAccJerk-std()-X   
+19 tBodyAccJerk-std()-Y   
+20 tBodyAccJerk-std()-Z   
+21 tBodyGyro-mean()-X   
+22 tBodyGyro-mean()-Y   
+23 tBodyGyro-mean()-Z   
+24 tBodyGyro-std()-X   
+25 tBodyGyro-std()-Y   
+26 tBodyGyro-std()-Z   
+27 tBodyGyroJerk-mean()-X   
+28 tBodyGyroJerk-mean()-Y   
+29 tBodyGyroJerk-mean()-Z   
+30 tBodyGyroJerk-std()-X   
+31 tBodyGyroJerk-std()-Y   
+32 tBodyGyroJerk-std()-Z   
+33 tBodyAccMag-mean()   
+34 tBodyAccMag-std()   
+35 tGravityAccMag-mean()   
+36 tGravityAccMag-std()   
+37 tBodyAccJerkMag-mean()   
+38 tBodyAccJerkMag-std()   
+39 tBodyGyroMag-mean()   
+40 tBodyGyroMag-std()   
+41 tBodyGyroJerkMag-mean()   
+42 tBodyGyroJerkMag-std()   
+43 fBodyAcc-mean()-X   
+44 fBodyAcc-mean()-Y   
+45 fBodyAcc-mean()-Z   
+46 fBodyAcc-std()-X   
+47 fBodyAcc-std()-Y   
+48 fBodyAcc-std()-Z   
+49 fBodyAccJerk-mean()-X   
+50 fBodyAccJerk-mean()-Y   
+51 fBodyAccJerk-mean()-Z   
+52 fBodyAccJerk-std()-X   
+53 fBodyAccJerk-std()-Y   
+54 fBodyAccJerk-std()-Z   
+55 fBodyGyro-mean()-X   
+56 fBodyGyro-mean()-Y   
+57 fBodyGyro-mean()-Z   
+58 fBodyGyro-std()-X   
+59 fBodyGyro-std()-Y   
+60 fBodyGyro-std()-Z   
+61 fBodyAccMag-mean()   
+62 fBodyAccMag-std()   
+63 fBodyBodyAccJerkMag-mean()   
+64 fBodyBodyAccJerkMag-std()   
+65 fBodyBodyGyroMag-mean()   
+66 fBodyBodyGyroMag-std()   
+67 fBodyBodyGyroJerkMag-mean()   
+68 fBodyBodyGyroJerkMag-std()   
