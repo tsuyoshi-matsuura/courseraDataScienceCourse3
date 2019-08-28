@@ -1,11 +1,11 @@
 # Description of the script in run_analysis.R 
 
-## Usage: source(run_analyis.R) 
+### Usage: source(run_analyis.R) 
 This will create two tidy datasets 'data' and 'data_avg'. The first dataset
 'data' is the result of performing tasks 1-4 in the assignment. The second
-dataset 'data_avg' is the result of taks 5 of the assignment. Moreover, the
-script will output a file 'data_avg.txt' to the working directory. This file
-is submitted as part of the assignment. 
+dataset 'data_avg' is the result of task 5 of the assignment. Moreover, the
+script will output the dataset 'data_avg' as a file 'data_avg.txt' to the
+working directory. This file is submitted as part of the assignment. 
 
 
 
