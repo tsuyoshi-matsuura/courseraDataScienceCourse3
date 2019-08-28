@@ -146,9 +146,10 @@ data set is in 'data_avg'.
 
 The dimension of the data set is 180 x 68. The rows form all combination of 6 activities 
 and 30 subjects whos performed the activities.  
-The data set has the following columns:
-1 activity   
-2 subject   
+The data set has the following columns:  
+1 activity: description of the activity performed by the subject: WALKING,
+  WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING or LAYING   
+2 subject: subject id ranges from 1 to 30   
 3 tBodyAcc-mean()-X   
 4 tBodyAcc-mean()-Y   
 5 tBodyAcc-mean()-Z   
@@ -215,3 +216,7 @@ The data set has the following columns:
 66 fBodyBodyGyroMag-std()   
 67 fBodyBodyGyroJerkMag-mean()   
 68 fBodyBodyGyroJerkMag-std()   
+
+Variables in columns 3 to 68 are described in 'features_info.txt', see also the
+inserted text above. Note that in this data set each variable is the mean
+of the measurement for each activity and each subject,
