@@ -12,14 +12,15 @@
 #
 # This script performs all the above tasks, but in a sligtly different order.
 # The script takes the folloing steps
-#   A) Download and unzip the data file provided by the assignment. Load the
-#      files in the zip file into datasets:
-#         a) Training data set:    data_train
-#         b) Traing activity set:  act_train
-#         c) Training subject set: sub_train
-#         d) Test data set:        data_test
-#         e) Test activity set:    act_test
-#         f) Test subject set:     sub_test
+#   A) Download and unzip the data file provided by the assignment (this 
+#      functionality has been commented out). Load the files in the zip file
+#      into datasets:
+#         a) Training data set:     data_train
+#         b) Training activity set: act_train
+#         c) Training subject set:  sub_train
+#         d) Test data set:         data_test
+#         e) Test activity set:     act_test
+#         f) Test subject set:      sub_test
 #   B) Firstly, the training and test data sets are merged in the row direction,
 #      i.e.after this step there are still three data sets:
 #         a) all processed data: data_all ~ data_train + data_test
