@@ -1,6 +1,11 @@
+# Download the data
+url="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(url,destfile="./data.zip")
+unzip("data.zip",exdir=".")
+
 # Load training data
 # X_train.txt has 561 columns
-X_train <- read.table("./UCI HAR Dataset/train/X_train.txt",width <- wid)
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt",)
 
 # y_train.txt is a single column file with activity data (1-6)
 y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
@@ -27,7 +32,7 @@ subject_all <- rbind(subject_train,subject_test)
 header_all <- read.table("./UCI HAR Dataset/features.txt")
 names(X_all) <- header_all[,2]
 
-# Only keep the meand and standard deviation of the measurements
+# Only keep the mean and standard deviation of the measurements
 # This means only keeping columns with '-mean(' and '-std(' in their names
 keep_col <- grep("-mean\\(|-std\\(",names(X_all))
 mydata <- X_all[,keep_col]
@@ -40,10 +45,10 @@ names(subject_all) <- "subject"
 mydata <- cbind(y_all,subject_all,mydata)
 
 # Give descriptive names for the activities
-# read activtity code file 'activity_labels.txt
+# read activtity code file 'activity_labels.txt'
 activity <- read.table("./UCI HAR Dataset/activity_labels.txt",stringsAsFactors=FALSE)
 
 setactname <- function(x) activity[x,2]
 mydata$activity <- sapply(mydata$activity,setactname)
 
-mydata_avg <- group_by(activity,subject) %>% summarize_all(mean)
+mydata_avg <- mydata %>% group_by(activity,subject) %>% summarize_all(mean)
