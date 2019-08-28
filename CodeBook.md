@@ -20,19 +20,19 @@ The dataset includes the following files:
 
 - 'features_info.txt': Shows information about the variables used on the feature vector.
 
-- 'features.txt': List of all features (561 variable)
+- 'features.txt': List of all features (561 variables)
 
-- 'activity_labels.txt': Links the class labels with their activity name.
+- 'activity_labels.txt': Links the activity labels (1-6) with their activity name.
 
 - 'train/X_train.txt': Training set. Size: 7352 x 561
 
-- 'train/y_train.txt': Training labels (activity id's: 1-6). Size: 7352 x 1
+- 'train/y_train.txt': Training activity labels (1-6). Size: 7352 x 1
 
 - 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. Size: 7352 x 1
 
 - 'test/X_test.txt': Test set. Size: 2947 x 516
 
-- 'test/y_test.txt': Test labels (activity id's: 1-6). Size: 2947 x 1
+- 'test/y_test.txt': Test activity labels (1-6). Size: 2947 x 1
 
 - 'test/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. Size: 2947 x 1
 
