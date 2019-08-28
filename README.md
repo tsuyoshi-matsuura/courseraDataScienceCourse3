@@ -22,7 +22,7 @@ The course assignment asks to create a script that performs the following tasks:
 ### Implementation of the above tasks in the script
      
 This script performs all the above tasks, but in a sligtly different order.
-The script takes the folloing steps: 
+The script takes the following steps:
   1) Download and unzip the data file provided by the assignment (this 
      functionality has been commented out). Load the files in the zip file
      into datasets: 
