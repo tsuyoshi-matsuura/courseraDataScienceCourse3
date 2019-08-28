@@ -1,5 +1,13 @@
-# courseraDataScienceCourse3
-Assigment for Getting and Cleaning Data
+# Description of the script in run_analysis.R 
+
+## Usage: source(run_analyis.R) 
+This will create two tidy datasets 'data' and 'data_avg'. The first dataset
+'data' is the result of performing tasks 1-4 in the assignment. The second
+dataset 'data_avg' is the result of taks 5 of the assignment. Moreover, the
+script will output a file 'data_avg.txt' to the working directory. This file
+is submitted as part of the assignment. 
+
+
 
 Script prepared as part of the "Getting and Cleaning Data Course Project"
 The course assignment asks to create a script that performs the following tasks
