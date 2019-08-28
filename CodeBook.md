@@ -112,3 +112,25 @@ The complete list of variables of each feature vector is available in 'features.
 #### End content 'features_info.txt'
 
 ### Data cleaning process 
+The objective of the project is to create a tidy dataset for a subset of the source data. The following criteria were used to define a tidy dataset, viz.
+1. Each variable forms a column
+2. Each observation forms a row
+3. Each type of observational unit forms a table 
+
+The source data already fulfil these criteria to a large extent, as each variable forms a column and each observation forms a row in the X_train.txt and X_test.txt data files. However, to make the datasets complete the data in X_train and X_test need to be combined with the activity and subject datasets in y_train/test and subject_train/test data,
+Moreover, in this project we would like to restrict the data to the mean and standard deviation for each measurement which requires reduction of the dataset.
+
+To arrive at the desired reduced, tidy dataset the following actions were performed:
+  1) Merge the training and the test sets to create one data set.
+  2) Extract only the measurements on the mean and standard deviation for 
+     each measurement.
+  3) Use descriptive activity names to name the activities in the data set
+  4) Appropriately label the data set with descriptive variable names.
+  
+To execute the above the following choices were made:
+The descriptive variable names were taken from the 'features.txt' file which tabulates
+the variable name for each column in the the X_train and X_test data
+The descriptive activity names were taken from the 'activity_labels.txt' files which tabulates the activity id's 
+(used in the y_train and y_test data) agains the activity name chosen by the authors of the source data.
+The mean and standard deviation data were identified by the variable name which should contain either '-mean('
+or '-std(' respectively.s
