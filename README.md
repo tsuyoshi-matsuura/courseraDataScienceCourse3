@@ -23,20 +23,18 @@ The course assignment asks to create a script that performs the following tasks:
      
 This script performs all the above tasks, but in a sligtly different order.
 The script takes the following steps:
-  1) Download and unzip the data file provided by the assignment (this 
-     functionality has been commented out). Load the files in the zip file
-     into datasets: 
-        1) Training data set:    data_train
-        2) Traing activity set:  act_train
-        3) Training subject set: sub_train
-        4) Test data set:        data_test
-        5) Test activity set:    act_test
-        6) Test subject set:     sub_test
-  2) Firstly, the training and test data sets are merged in the row direction,
+  1) Load data files in the data files into datasets: 
+        1) Training data set ('X_train.txt'):    data_train
+        2) Traing activity set ('y_train.txt'):  act_train
+        3) Training subject set (subject_train.txt): sub_train
+        4) Test data set ('X_test.txt':        data_test
+        5) Test activity set ('y_test.txt':    act_test
+        6) Test subject set (subject_test.txt'):     sub_test
+  2) The training and test data sets are merged in the row direction,
      i.e.after this step there are still three data sets:
-        a) all processed data: data_all ~ data_train + data_test
-        b) all activity data:  act_all  ~ act_train  + act_test
-        c) all subject data:   sub_all  ~ sub_train  + sub_test
+        1) all processed data: data_all ~ data_train + data_test
+        2) all activity data:  act_all  ~ act_train  + act_test
+        3) all subject data:   sub_all  ~ sub_train  + sub_test
   3) All data sets are labeled with descriptive names. The names for the
      processed data are taken from the file 'features.txt' (561 names),
      the acivity data are labeled 'activity', the subject data are labeled 'subject'
